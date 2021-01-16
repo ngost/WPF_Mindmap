@@ -1,0 +1,15 @@
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\bin\Debug\WPF_MindMap.exe.config
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\bin\Debug\WPF_MindMap.exe
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\bin\Debug\WPF_MindMap.pdb
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.csprojAssemblyReference.cache
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\MainWindow.g.cs
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\App.g.cs
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap_MarkupCompile.cache
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap_MarkupCompile.lref
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\MainWindow.baml
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.g.resources
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.Properties.Resources.resources
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.csproj.GenerateResource.cache
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.csproj.CoreCompileInputs.cache
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.exe
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.pdb

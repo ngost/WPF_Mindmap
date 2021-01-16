@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_MindMap"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Background="OrangeRed"
+        Title="Simple MindMap" Height="800" Width="1300" MinWidth="1300" MinHeight="800">
+    <Grid Margin="0,0,3,-0.333">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="192*">
+                <!-- Title grid-->
+            </RowDefinition>
+
+            <RowDefinition Height="40*">
+                <!-- Recently smapshot grid-->
+
+            </RowDefinition>
+            <RowDefinition Height="154*"/>
+            <RowDefinition Height="37*">
+                <!-- new project grid -->
+            </RowDefinition>
+            <RowDefinition Height="154*"/>
+            <RowDefinition Height="193*">
+                <!-- empty grid -->
+            </RowDefinition>
+
+        </Grid.RowDefinitions>
+        <TextBlock VerticalAlignment="Center" Grid.Row ="0" Grid.Column="0" Grid.ColumnSpan="5"  FontSize="40" Text="Simple Mind Map" TextAlignment="Center" Height="54"/>
+        <TextBlock Foreground="White" Background="Black" Text="Recent Work" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Height="34"/>
+        <TextBlock Foreground="White" Background="Black" Text="New Project" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="5" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Height="34"/>
+        <Image x:Name="recent_img1" Grid.Row="2" Grid.Column="0" Source="image_square.png"/>
+        <Image x:Name="recent_img2" Grid.Row="2" Grid.Column="1" Source="image_square.png"/>
+        <Image x:Name="recent_img3" Grid.Row="2" Grid.Column="2" Source="image_square.png"/>
+        <Image x:Name="recent_img4" Grid.Row="2" Grid.Column="3" Source="image_square.png"/>
+        <Image x:Name="recent_img5" Grid.Row="2" Grid.Column="4" Source="image_square.png"/>
         
+        <Image x:Name="new_img" Grid.Row="4" Grid.Column="2" Source="add_new.png"/>
+
+
     </Grid>
 </Window>
