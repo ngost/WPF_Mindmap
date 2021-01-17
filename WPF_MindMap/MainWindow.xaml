@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Background="OrangeRed"
         Title="Simple MindMap" Height="800" Width="1300" MinWidth="1300" MinHeight="800">
-    <Grid Margin="0,0,3,-0.333">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -35,7 +35,7 @@
             </RowDefinition>
 
         </Grid.RowDefinitions>
-        <TextBlock VerticalAlignment="Center" Grid.Row ="0" Grid.Column="0" Grid.ColumnSpan="5"  FontSize="40" Text="Simple Mind Map" TextAlignment="Center" Height="54"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row ="0" Grid.Column="0" Grid.ColumnSpan="5"  FontSize="50" Text="Simple Mind Map" TextAlignment="Center" Height="82" Margin="0,41,0.333,69"/>
         <TextBlock Foreground="White" Background="Black" Text="Recent Work" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Height="34"/>
         <TextBlock Foreground="White" Background="Black" Text="New Project" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="5" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Height="34"/>
         <Image x:Name="recent_img1" Grid.Row="2" Grid.Column="0" Source="image_square.png"/>
@@ -43,8 +43,16 @@
         <Image x:Name="recent_img3" Grid.Row="2" Grid.Column="2" Source="image_square.png"/>
         <Image x:Name="recent_img4" Grid.Row="2" Grid.Column="3" Source="image_square.png"/>
         <Image x:Name="recent_img5" Grid.Row="2" Grid.Column="4" Source="image_square.png"/>
-        
-        <Image x:Name="new_img" Grid.Row="4" Grid.Column="2" Source="add_new.png"/>
+
+
+        <Button x:Name="new_btn" Grid.Row="4" Grid.Column="2" Background="Transparent" Margin="10,10,10,10" BorderThickness="0,0,0,0" Click="new_btn_Click">
+            <ContentControl>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="add_new.png"/>
+                </StackPanel>
+            </ContentControl>
+        </Button>
+
 
 
     </Grid>

@@ -13,3 +13,5 @@ C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.csproj.G
 C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.csproj.CoreCompileInputs.cache
 C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.exe
 C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\WPF_MindMap.pdb
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\CreateWindow.g.cs
+C:\Users\Lee\source\repos\WPF_MindMap\WPF_MindMap\obj\Debug\CreateWindow.baml

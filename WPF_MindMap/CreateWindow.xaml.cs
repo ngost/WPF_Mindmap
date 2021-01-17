@@ -10,28 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WPF_MindMap
 {
     /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// CreateWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CreateWindow : Window
     {
-        CreateWindow createWindow;
-        public MainWindow()
+        public CreateWindow()
         {
             InitializeComponent();
-            createWindow = new CreateWindow();
-        }
-
-        private void new_btn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            createWindow.Show();
-
         }
     }
 }
