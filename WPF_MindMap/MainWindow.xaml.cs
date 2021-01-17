@@ -23,6 +23,7 @@ namespace WPF_MindMap
         CreateWindow createWindow;
         public MainWindow()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             createWindow = new CreateWindow();
         }
@@ -31,6 +32,7 @@ namespace WPF_MindMap
         {
             this.Close();
             createWindow.Show();
+            
 
         }
     }

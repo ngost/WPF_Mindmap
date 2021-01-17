@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_MindMap"
         mc:Ignorable="d"
-        Background="OrangeRed"
+        Background="Orange"
         Title="Simple MindMap" Height="800" Width="1300" MinWidth="1300" MinHeight="800">
     <Grid>
         <Grid.ColumnDefinitions>

@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using WPF_MindMap.Resources.scripts;
 namespace WPF_MindMap
 {
     /// <summary>
@@ -19,9 +19,19 @@ namespace WPF_MindMap
     /// </summary>
     public partial class CreateWindow : Window
     {
-        public CreateWindow()
+        public CreateWindow(int point_x = 0, int point_y = 0)
         {
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.WindowState = WindowState.Maximized;
+
             InitializeComponent();
+
+            StackPanel main_mindbox = new MindTextBox();
+            draw_panel.Children.Add(main_mindbox);
+
         }
+
+
+
     }
 }

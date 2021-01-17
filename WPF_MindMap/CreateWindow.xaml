@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_MindMap"
         mc:Ignorable="d"
-        Title="CreateWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="CreateWindow" Height="800" Width="1300">
+    <Grid x:Name="m_grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="131*"/>
+            <ColumnDefinition Width="662*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="side_panel" Background="Orange" Grid.Column="0"></StackPanel>
+        <DockPanel x:Name="draw_panel" Background="#E2E2E2" Grid.Column="1"/>
+
+
     </Grid>
 </Window>
