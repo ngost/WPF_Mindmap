@@ -26,8 +26,9 @@ namespace WPF_MindMap
 
             InitializeComponent();
 
-            StackPanel main_mindbox = new MindTextBox();
-            draw_panel.Children.Add(main_mindbox);
+            StackPanel main_mindbox1 = new MindTextBox(0,0,"환영합니다!",true);
+            draw_panel.Children.Add(main_mindbox1);
+            
 
         }
 
