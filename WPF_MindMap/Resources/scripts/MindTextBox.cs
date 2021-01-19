@@ -73,40 +73,55 @@ namespace WPF_MindMap.Resources.scripts
         {
             //Debug.WriteLine(left);
             //Debug.WriteLine(top);
-
+            
             Canvas.SetLeft(this, left);
             Canvas.SetTop(this, top);
             Canvas.SetZIndex(this, 1);
 
         }
 
-        private Line DrawingLine(TextBox A, TextBox B)
+        private Line DrawingLine(Point _point1,Point _point2,double thickness = 1)
         {
             Line line = new Line();
 
-            Point _point1 = new Point(Canvas.GetLeft(A), Canvas.GetTop(A));
-            Point _point2 = new Point(Canvas.GetLeft(B), Canvas.GetTop(B));
-            Debug.WriteLine("draw_point :" + _point1);
-            Debug.WriteLine("draw_point :" + _point2);
+            //Debug.WriteLine("draw_point :" + _point1);
+            //Debug.WriteLine("draw_point :" + _point2);
 
-            line.X1 = _point1.X + (A.Width / 2);
-            line.Y1 = _point1.Y + (A.Height / 2);
+            line.X1 = _point1.X + (this.Width / 2);
+            line.Y1 = _point1.Y + (this.Height / 2);
             line.X2 = _point2.X + (this.Width / 2);
             line.Y2 = _point2.Y + (this.Height / 2);
 
             SolidColorBrush blackBrush = new SolidColorBrush();
             blackBrush.Color = Colors.Black;
-            line.StrokeThickness = 1;
+            line.StrokeThickness = thickness;
             line.Stroke = blackBrush;
 
             return line;
         }
-        private void Connected_Child_Line_Update()
+        private void Connected_Child_Line_Update(double thickness = 0.2)
         {
-            //canvas.Children.Remove(child_lines)
-            //DrawingLine()
+            //1. remove parent line
+            if (this.child_lines.Count == 0)
+                return;
+
+            foreach(var child_line in (this.child_lines))
+            {
+                canvas.Children.Remove(child_line);
+
+            }
+            foreach(MindTextBox child_box in this.childBoxs)
+            {
+                child_box.parent_line = null;
+                Line line = DrawingLine(this.TranslatePoint(new Point(0, 0), canvas)
+    , child_box.TranslatePoint(new Point(0, 0), canvas), thickness);
+                child_box.parent_line = line;
+                this.child_lines.Add(line);
+                canvas.Children.Add(line);
+            }
+
         }
-        private void Connected_Parent_Line_Update()
+        private void Connected_Parent_Line_Update(double thickness = 0.2)
         {
             if (this.parentBox == null)
             {
@@ -115,15 +130,16 @@ namespace WPF_MindMap.Resources.scripts
 
             }
             //1. remove parent line
-            //canvas.Children.Remove(this.parent_line);
-            //this.parentBox.child_lines.Remove(this.parent_line);
+            canvas.Children.Remove(this.parent_line);
+            this.parentBox.child_lines.Remove(this.parent_line);
 
             //2. new draw
 
-            Debug.WriteLine("re draw");
-            Line line = DrawingLine(this,this.parentBox);
+            Line line = DrawingLine(this.parentBox.TranslatePoint(new Point(0,0),canvas)
+                , this.TranslatePoint(new Point(0, 0), canvas), thickness);
 
             Canvas.SetZIndex(line, 0);
+            canvas.Children.Add(line);
 
             this.parent_line = line;
             this.parentBox.child_lines.Add(line);
@@ -141,10 +157,11 @@ namespace WPF_MindMap.Resources.scripts
                 box.parentBox = this;
                 this.childBoxs.Add(box);
                 canvas.Children.Add(box);
-                box.SetActualPosition(Canvas.GetLeft(this) + Utils.ROOTS_CHILD_POINT_VALUE[this.child_count - 1].X,
-                    Canvas.GetTop(this) + Utils.ROOTS_CHILD_POINT_VALUE[this.child_count - 1].Y);
+                box.SetActualPosition(this.TranslatePoint(new Point(0, 0), canvas).X + Utils.ROOTS_CHILD_POINT_VALUE[this.child_count - 1].X,
+                    this.TranslatePoint(new Point(0, 0), canvas).Y + Utils.ROOTS_CHILD_POINT_VALUE[this.child_count - 1].Y);
 
-                Line line = DrawingLine(this, box);
+                Line line = DrawingLine(this.TranslatePoint(new Point(0, 0), canvas)
+                    , new Point(Canvas.GetLeft(box),Canvas.GetTop(box)));
                 //line setting
                 canvas.Children.Add(line);
                 Canvas.SetZIndex(line, 0);
@@ -177,12 +194,14 @@ namespace WPF_MindMap.Resources.scripts
                     MindTextBox box = new MindTextBox(canvas);
 //                    ,this.parentBox.Margin.Left + Utils.ROOTS_CHILD_POINT_VALUE[this.parentBox.child_count - 1].X, this.parentBox.Margin.Top + Utils.ROOTS_CHILD_POINT_VALUE[this.parentBox.child_count - 1].Y
 
-
                     box.parentBox = this.parentBox;
                     this.parentBox.childBoxs.Add(box);
                     canvas.Children.Add(box);
+                    
                     box.SetActualPosition(Canvas.GetLeft(this.parentBox) + Utils.ROOTS_CHILD_POINT_VALUE[this.parentBox.child_count - 1].X, Canvas.GetTop(this.parentBox) + Utils.ROOTS_CHILD_POINT_VALUE[this.parentBox.child_count - 1].Y);
-                    Line line = DrawingLine(this.parentBox, box);
+
+                    Line line = DrawingLine(box.parentBox.TranslatePoint(new Point(0, 0), canvas),
+                        new Point(Canvas.GetLeft(box), Canvas.GetTop(box)));
                     //line setting
                     canvas.Children.Add(line);
                     Canvas.SetZIndex(line, 0);
@@ -241,18 +260,8 @@ namespace WPF_MindMap.Resources.scripts
             _currentTT = this.RenderTransform as TranslateTransform;
             _isMoving = false;
 
-            var mousePoint = Mouse.GetPosition((Canvas)this.Parent);
-            var offsetX = (_currentTT == null ? _buttonPosition.Value.X : _buttonPosition.Value.X - _currentTT.X) + deltaX - mousePoint.X;
-            var offsetY = (_currentTT == null ? _buttonPosition.Value.Y : _buttonPosition.Value.Y - _currentTT.Y) + deltaY - mousePoint.Y;
-
-            SetActualPosition(Canvas.GetLeft(this) + offsetX, Canvas.GetTop(this) + offsetY);
-
-            Debug.WriteLine(_currentTT.X);
-            Debug.WriteLine(_currentTT.Y);
-
-            Debug.WriteLine("get left" + Canvas.GetLeft(this));
-            Debug.WriteLine("get top" + Canvas.GetTop(this));
-
+            Connected_Parent_Line_Update(1);
+            Connected_Child_Line_Update(1);
         }
 
         private void OnPreviewMouseMove(object sender, MouseEventArgs e)
@@ -270,6 +279,7 @@ namespace WPF_MindMap.Resources.scripts
 
             
             Connected_Parent_Line_Update();
+            Connected_Child_Line_Update();
         }
 
 
