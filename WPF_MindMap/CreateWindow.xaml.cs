@@ -23,13 +23,17 @@ namespace WPF_MindMap
         {
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.WindowState = WindowState.Maximized;
-
+            this.Loaded += PageLoaded;
             InitializeComponent();
 
-            StackPanel main_mindbox1 = new MindTextBox(0,0,"환영합니다!",true);
-            draw_panel.Children.Add(main_mindbox1);
-            
+        }
 
+        public void PageLoaded(Object sender, RoutedEventArgs e)
+        {
+            MindTextBox main_mindbox1 = new MindTextBox(draw_panel, "환영합니다!", true);
+            draw_panel.Children.Add(main_mindbox1);
+
+            main_mindbox1.SetActualPosition((draw_panel.ActualWidth - main_mindbox1.Width) / 2, (draw_panel.ActualHeight - main_mindbox1.Height) / 2);
         }
 
 

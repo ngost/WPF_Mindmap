@@ -14,8 +14,8 @@
         <Grid.RowDefinitions>
         </Grid.RowDefinitions>
         <StackPanel x:Name="side_panel" Background="Orange" Grid.Column="0"></StackPanel>
-        <Grid x:Name="draw_panel" Background="#E2E2E2" Grid.Column="1">
-        </Grid>
+        <Canvas x:Name="draw_panel" Background="#E2E2E2" Grid.Column="1">
+        </Canvas>
 
 
     </Grid>
